@@ -1,0 +1,21 @@
+version = 1
+
+[project]
+name = "RenderVet demo: intentionally broken batch"
+root = "outputs"
+report_dir = ".rendervet"
+fresh_after = "2020-01-01T00:00:00Z"
+
+[[batch]]
+id = "shots"
+glob = "shot_*"
+kind = "image"
+expected_count = 12
+sequence_regex = 'shot_(\d+)'
+sequence_start = 1
+sequence_end = 12
+allowed_extensions = [".png"]
+min_bytes = 50
+width = 64
+height = 64
+duplicates = "error"
