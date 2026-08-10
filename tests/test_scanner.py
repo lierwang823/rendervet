@@ -194,7 +194,10 @@ kind = "image"
 
     def swap_after_hash(path: Path) -> str:
         path.unlink()
-        path.symlink_to(outside)
+        try:
+            path.symlink_to(outside)
+        except OSError:
+            pytest.skip("symlinks unavailable")
         return "a" * 64
 
     monkeypatch.setattr("rendervet.scanner._sha256", swap_after_hash)
