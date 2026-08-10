@@ -21,12 +21,13 @@ def scan_result(tmp_path: Path, batch: BatchResult | None = None) -> ScanResult:
 
 
 def test_html_escapes_untrusted_filenames(tmp_path: Path) -> None:
-    malicious = tmp_path / "<img onerror=alert(1)>.png"
-    malicious.write_bytes(png_bytes(2, 2, (1, 2, 3)))
+    image_path = tmp_path / "preview.png"
+    image_path.write_bytes(png_bytes(2, 2, (1, 2, 3)))
+    malicious_name = "<img onerror=alert(1)>.png"
     record = FileRecord(
-        path=malicious,
-        relative_path=malicious.name,
-        size=malicious.stat().st_size,
+        path=image_path,
+        relative_path=malicious_name,
+        size=image_path.stat().st_size,
         modified_at=datetime.now(timezone.utc),
         extension=".png",
         sha256="a" * 64,
