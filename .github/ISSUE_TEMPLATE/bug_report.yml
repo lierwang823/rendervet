@@ -1,0 +1,41 @@
+name: Bug report
+description: Report reproducible incorrect behavior using synthetic or shareable inputs.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not upload private media, credentials, or unredacted absolute paths.
+  - type: input
+    id: version
+    attributes:
+      label: RenderVet version
+      placeholder: rendervet 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options: [macOS, Linux, Windows, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Minimal redacted contract
+      render: toml
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps and observed output
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true

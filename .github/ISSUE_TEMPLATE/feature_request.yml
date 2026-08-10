@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a deterministic batch check or integration.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: failure
+    attributes:
+      label: What silent batch failure should RenderVet catch?
+      description: Describe the actual file/folder outcome, not a general AI feature.
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: How could a user declare the expected result?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Minimal synthetic example
+    validations:
+      required: true
